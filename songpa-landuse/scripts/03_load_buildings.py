@@ -40,7 +40,16 @@ logger = logging.getLogger(__name__)
 
 # ── 경로 설정 ─────────────────────────────────────────────────────
 PROJECT_ROOT = SCRIPT_DIR.parent
-DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+
+# 환경 변수 또는 폴백 경로 설정
+import os
+DATA_SRC_ENV = os.environ.get("DATA_SRC")
+if DATA_SRC_ENV:
+    DATA_SRC = Path(DATA_SRC_ENV)
+else:
+    DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+    if not DATA_SRC.exists():
+        DATA_SRC = PROJECT_ROOT.parent
 
 # 입력 파일
 GIS_BLDG_SHP = (
@@ -308,22 +317,22 @@ def build_parcel_building_mapping(
             gis_pk_map = gis_pk_map.rename(columns={"BD_MGT_SN": "GIS_BD_MGT_SN"})
 
             # MGM_BLDRGST_PK로 직접 매핑 시도
-            # 표제부 PK가 GIS BD_MGT_SN에 포함되는지 확인
-            remaining_list = list(remaining_pk)
-            gis_sn_set = set(gdf_bldg["BD_MGT_SN"].unique())
+            # 고성능 해시 기반 접두사 검색 적용
+            remaining_set = set(str(pk) for pk in remaining_pk)
+            pk_lengths = sorted(list(set(len(str(pk)) for pk in remaining_pk)))
 
             p2_matches = []
-            for pk in remaining_list:
-                # BD_MGT_SN이 PK로 시작하는 GIS 건물 찾기
-                matching_gis = gdf_bldg[
-                    gdf_bldg["BD_MGT_SN"].str.startswith(str(pk))
-                ]
-                if len(matching_gis) > 0:
-                    for _, gis_row in matching_gis.iterrows():
-                        p2_matches.append({
-                            "MGM_BLDRGST_PK": pk,
-                            "PNU": gis_row["PNU"],
-                        })
+            for _, gis_row in gdf_bldg.iterrows():
+                sn = str(gis_row["BD_MGT_SN"])
+                pnu = gis_row["PNU"]
+                for l in pk_lengths:
+                    if len(sn) >= l:
+                        prefix = sn[:l]
+                        if prefix in remaining_set:
+                            p2_matches.append({
+                                "MGM_BLDRGST_PK": prefix,
+                                "PNU": pnu,
+                            })
 
             if p2_matches:
                 p2_df = pd.DataFrame(p2_matches).drop_duplicates()
@@ -352,14 +361,22 @@ def build_parcel_building_mapping(
         logger.info("    필지 데이터 로드: %d건", len(gdf_parcels))
 
         # GIS 건물과 표제부 PK 매핑이 안 된 건물의 중심점으로 spatial join
-        # 남은 PK에 해당하는 GIS 건물 찾기 (BD_MGT_SN startswith PK)
+        # 고성능 해시 기반 접두사 검색 적용
+        remaining_set = set(str(pk) for pk in remaining_pk)
+        pk_lengths = sorted(list(set(len(str(pk)) for pk in remaining_pk)))
+
         remaining_gis = []
-        for pk in remaining_pk:
-            match = gdf_bldg[gdf_bldg["BD_MGT_SN"].str.startswith(str(pk))]
-            if len(match) > 0:
-                row = match.iloc[0].copy()
-                row["MGM_BLDRGST_PK"] = pk
-                remaining_gis.append(row)
+        matched_pk_in_gis = set()
+        for _, gis_row in gdf_bldg.iterrows():
+            sn = str(gis_row["BD_MGT_SN"])
+            for l in pk_lengths:
+                if len(sn) >= l:
+                    prefix = sn[:l]
+                    if prefix in remaining_set and prefix not in matched_pk_in_gis:
+                        row = gis_row.copy()
+                        row["MGM_BLDRGST_PK"] = prefix
+                        remaining_gis.append(row)
+                        matched_pk_in_gis.add(prefix)
 
         if remaining_gis:
             gdf_remaining = gpd.GeoDataFrame(remaining_gis, crs=gdf_bldg.crs)

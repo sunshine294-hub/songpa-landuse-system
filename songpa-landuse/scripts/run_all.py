@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-run_all.py — 전처리 파이프라인 일괄 실행 (01 → 07)
-===================================================
+run_all.py — 전처리 파이프라인 일괄 실행 (01 → 07) (Windows CP949 호환버전)
+========================================================================
 
 Python 스크립트로 작성된 일괄 실행기.
 subprocess.run()으로 각 단계를 순차 실행하며,
@@ -43,7 +43,7 @@ def _format_duration(seconds: float) -> str:
 def main() -> int:
     """전체 파이프라인 실행. 종료 코드를 반환한다."""
     print("=" * 70)
-    print("  송파구 토지이용 전처리 파이프라인")
+    print("  송파구 토지이용 전처리 파이프라인 일괄 실행")
     print("=" * 70)
     print()
 
@@ -55,40 +55,40 @@ def main() -> int:
 
         # 스크립트 존재 여부 확인
         if not script_path.exists():
-            print(f"  [{i}/{len(STEPS)}] ⚠  {script_name} — 파일 없음, 건너뜀")
+            print(f"  [{i}/{len(STEPS)}] [SKIP] {script_name} - 파일 없음")
             print(f"         ({script_path})")
             print()
             results.append((script_name, description, 0.0, True))
             continue
 
-        print(f"  [{i}/{len(STEPS)}] ▶  {description}")
+        print(f"  [{i}/{len(STEPS)}] [RUN] {description}")
         print(f"         {script_name}")
         print()
 
         step_start = time.time()
 
         try:
+            # sys.executable을 사용해 현재 실행 중인 파이썬 인터프리터로 서브스크립트를 띄웁니다.
             result = subprocess.run(
                 [sys.executable, str(script_path)],
                 cwd=str(SCRIPT_DIR),
                 check=False,
-                capture_output=False,  # stdout/stderr를 터미널에 그대로 출력
             )
         except Exception as exc:
             elapsed = time.time() - step_start
-            print(f"\n  ✖  {script_name} 실행 중 예외 발생: {exc}")
+            print(f"\n  [ERROR] {script_name} 실행 중 예외 발생: {exc}")
             results.append((script_name, description, elapsed, False))
             break
 
         elapsed = time.time() - step_start
 
         if result.returncode != 0:
-            print(f"\n  ✖  {script_name} 실패 (exit code {result.returncode})")
+            print(f"\n  [FAIL] {script_name} 실패 (exit code {result.returncode})")
             print(f"     소요 시간: {_format_duration(elapsed)}")
             results.append((script_name, description, elapsed, False))
             break
 
-        print(f"\n  ✔  {script_name} 완료 ({_format_duration(elapsed)})")
+        print(f"\n  [SUCCESS] {script_name} 완료 ({_format_duration(elapsed)})")
         print("-" * 70)
         results.append((script_name, description, elapsed, True))
 
@@ -97,7 +97,7 @@ def main() -> int:
     # ── 최종 요약 ────────────────────────────────────────────────────
     print()
     print("=" * 70)
-    print("  실행 요약")
+    print("  최종 실행 결과 요약")
     print("=" * 70)
     print()
     print(f"  {'단계':<30s}  {'소요시간':>10s}  {'결과':>6s}")
@@ -105,7 +105,7 @@ def main() -> int:
 
     all_ok = True
     for script_name, description, elapsed, success in results:
-        status = "✔ OK" if success else "✖ FAIL"
+        status = "OK" if success else "FAIL"
         if not success:
             all_ok = False
         time_str = _format_duration(elapsed) if elapsed > 0 else "skip"
@@ -116,9 +116,9 @@ def main() -> int:
     print()
 
     if all_ok:
-        print("  🎉 전체 파이프라인 성공!")
+        print("  [SUCCESS] 전체 파이프라인이 성공적으로 완료되었습니다!")
     else:
-        print("  ❌ 파이프라인 중단 — 위 오류를 확인하세요.")
+        print("  [FAIL] 파이프라인이 중단되었습니다. 위 에러를 확인하세요.")
 
     print("=" * 70)
 

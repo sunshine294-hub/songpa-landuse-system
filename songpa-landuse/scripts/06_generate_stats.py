@@ -174,11 +174,21 @@ def main() -> None:
     # 고유 법정동 수
     emd_codes = parcels["PNU"].str[5:10].nunique()
 
+    # 집계구 수 동적 계산
+    oa_count = 0
+    if OA_IN.exists():
+        try:
+            temp_oa = gpd.read_file(OA_IN)
+            oa_count = len(temp_oa)
+        except Exception:
+            pass
+
     summary = {
         "parcel_count": parcel_count,
         "building_count": building_count,
         "total_area_m2": round(total_area, 1),
         "emd_count": int(emd_codes),
+        "oa_count": int(oa_count),
     }
     logger.info("요약: %s", summary)
 

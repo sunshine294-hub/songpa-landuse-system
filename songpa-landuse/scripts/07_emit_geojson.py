@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-07_emit_geojson.py — 최종 GeoJSON 내보내기 + frontend 복사
-==========================================================
+07_emit_geojson.py — 최종 GeoJSON 내보내기 + frontend 복사 (건물 주용도 포함)
+========================================================================
 
 입력:
   - data/interim/parcels_final.parquet
   - data/interim/buildings.parquet
+  - data/interim/parcel_building.parquet (건물-대장 매핑 활용)
 
 처리:
   1. parcels_final → EPSG:4326 → data/processed/parcels.geojson
      (PNU, JIBUN, zone_norm, main_purpose, area_m2)
-  2. buildings → EPSG:4326 → data/processed/buildings.geojson
-     (BD_MGT_SN, PNU, gis_purpose, gis_area)
+  2. buildings에 대장 매핑을 활용해 'main_purpose' 속성 결합
+     → EPSG:4326 → data/processed/buildings.geojson
+     (BD_MGT_SN, PNU, gis_purpose, gis_area, main_purpose)
   3. 모든 processed GeoJSON + stats.json → frontend/public/data/ 복사
 """
 from __future__ import annotations
@@ -25,20 +27,22 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import geopandas as gpd
+import pandas as pd
 
 from utils.crs import to_export
 from utils.io import read_parquet, write_geojson
+from utils.normalize import categorize_purpose
 
 # ---------------------------------------------------------------------------
 # 설정
 # ---------------------------------------------------------------------------
 logger = logging.getLogger(__name__)
-
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 # 입력
 PARCELS_IN = PROJECT_ROOT / "data" / "interim" / "parcels_final.parquet"
 BUILDINGS_IN = PROJECT_ROOT / "data" / "interim" / "buildings.parquet"
+PB_IN = PROJECT_ROOT / "data" / "interim" / "parcel_building.parquet"
 
 # 출력 (processed)
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
@@ -51,8 +55,8 @@ FRONTEND_DATA_DIR = PROJECT_ROOT / "frontend" / "public" / "data"
 # 필지에서 유지할 컬럼
 PARCEL_KEEP_COLS = ["PNU", "JIBUN", "zone_norm", "main_purpose", "area_m2", "geometry"]
 
-# 건물에서 유지할 컬럼
-BUILDING_KEEP_COLS = ["BD_MGT_SN", "PNU", "gis_purpose", "gis_area", "geometry"]
+# 건물에서 유지할 컬럼 (main_purpose 컬럼을 추가해 스타일링이 작동하도록 보장)
+BUILDING_KEEP_COLS = ["BD_MGT_SN", "PNU", "gis_purpose", "gis_area", "main_purpose", "geometry"]
 
 
 # ---------------------------------------------------------------------------
@@ -115,9 +119,9 @@ def main() -> None:
     write_geojson(parcels, PARCELS_OUT)
     _log_file_size(PARCELS_OUT)
 
-    # ── 2. 건물 GeoJSON 생성 ─────────────────────────────────────────
+    # ── 2. 건물 GeoJSON 생성 (대장 주용도 병합) ────────────────────────
     logger.info("")
-    logger.info("[2/3] 건물 GeoJSON 생성")
+    logger.info("[2/3] 건물 GeoJSON 생성 (주용도 병합)")
 
     if not BUILDINGS_IN.exists():
         logger.warning("건물 parquet 없음(%s) — 건물 GeoJSON 생성 건너뜀", BUILDINGS_IN)
@@ -128,6 +132,26 @@ def main() -> None:
         for col in ["BD_MGT_SN", "PNU"]:
             if col in buildings.columns:
                 buildings[col] = buildings[col].astype(str)
+
+        # 대장 매핑 정보와 조인하여 main_purpose 산출
+        if PB_IN.exists():
+            pb = pd.read_parquet(PB_IN)
+            pb["MGM_BLDRGST_PK"] = pb["MGM_BLDRGST_PK"].astype(str)
+            pb_slim = pb[["MGM_BLDRGST_PK", "MAIN_PURPS_CD_NM"]].drop_duplicates(subset=["MGM_BLDRGST_PK"], keep="first")
+            
+            # BD_MGT_SN 앞 25자리를 키로 조인 시도
+            buildings["_pk_candidate"] = buildings["BD_MGT_SN"].str[:25]
+            buildings = buildings.merge(pb_slim, left_on="_pk_candidate", right_on="MGM_BLDRGST_PK", how="left")
+            
+            # 주용도 결정: 대장 주용도(MAIN_PURPS_CD_NM) -> 없으면 GIS 용도(gis_purpose) -> 범주화
+            buildings["raw_purpose"] = buildings["MAIN_PURPS_CD_NM"].fillna(buildings["gis_purpose"])
+            buildings["main_purpose"] = buildings["raw_purpose"].apply(categorize_purpose).fillna("기타")
+            
+            buildings = buildings.drop(columns=["_pk_candidate", "MGM_BLDRGST_PK", "MAIN_PURPS_CD_NM", "raw_purpose"], errors="ignore")
+            logger.info("  건물 주용도 정규화 완료")
+        else:
+            logger.warning("  PB 매핑 파일 없음. gis_purpose만으로 main_purpose 부여")
+            buildings["main_purpose"] = buildings["gis_purpose"].apply(categorize_purpose).fillna("기타")
 
         # 필요 컬럼만 유지
         buildings = _safe_select_columns(buildings, BUILDING_KEEP_COLS)
@@ -147,8 +171,7 @@ def main() -> None:
     for geojson_path in PROCESSED_DIR.glob("*.geojson"):
         _copy_to_frontend(geojson_path, FRONTEND_DATA_DIR)
 
-    # stats.json (06에서 이미 frontend에 직접 저장하지만,
-    # processed에도 사본이 있을 수 있으므로 복사)
+    # stats.json 복사 상태 점검
     stats_json = FRONTEND_DATA_DIR / "stats.json"
     if stats_json.exists():
         logger.info("  stats.json 이미 존재: %.2f MB",

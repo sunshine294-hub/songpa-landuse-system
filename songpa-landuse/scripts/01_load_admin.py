@@ -29,7 +29,16 @@ logger = logging.getLogger(__name__)
 # ── 경로 설정 ─────────────────────────────────────────────────────
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+
+# 환경 변수 또는 폴백 경로 설정
+import os
+DATA_SRC_ENV = os.environ.get("DATA_SRC")
+if DATA_SRC_ENV:
+    DATA_SRC = Path(DATA_SRC_ENV)
+else:
+    DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+    if not DATA_SRC.exists():
+        DATA_SRC = PROJECT_ROOT.parent
 
 # 입력 파일
 UMD_SHP = (
@@ -102,6 +111,19 @@ def load_dong_boundary() -> gpd.GeoDataFrame:
     # 코드 컬럼 str 보장
     gdf["ADM_CD"] = gdf["ADM_CD"].astype(str)
     gdf["BASE_DATE"] = gdf["BASE_DATE"].astype(str)
+
+    # ADM_NM 컬럼 존재 여부 체크 및 폴백 적용
+    if "ADM_NM" not in gdf.columns:
+        logger.warning("  ADM_NM 컬럼이 존재하지 않습니다. 대체 속성 검색 중...")
+        if "EMD_KOR_NM" in gdf.columns:
+            gdf["ADM_NM"] = gdf["EMD_KOR_NM"]
+        elif "EMD_NM" in gdf.columns:
+            gdf["ADM_NM"] = gdf["EMD_NM"]
+        elif "ADM_CD" in gdf.columns:
+            gdf["ADM_NM"] = gdf["ADM_CD"]
+        else:
+            gdf["ADM_NM"] = "행정동"
+        logger.info("  폴백 적용 완료: ADM_NM 생성됨")
 
     # 지오메트리 유효성 검증
     invalid_count = (~gdf.geometry.is_valid).sum()

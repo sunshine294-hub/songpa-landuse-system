@@ -39,7 +39,14 @@ logger = logging.getLogger(__name__)
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 # 데이터 소스 경로 (prom/ 디렉터리 기준)
-DATA_SRC = PROJECT_ROOT.parent  # c:\Users\gangg\antigravity\prom
+import os
+DATA_SRC_ENV = os.environ.get("DATA_SRC")
+if DATA_SRC_ENV:
+    DATA_SRC = Path(DATA_SRC_ENV)
+else:
+    DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+    if not DATA_SRC.exists():
+        DATA_SRC = PROJECT_ROOT.parent
 
 OA_SHP = DATA_SRC / "bnd_oa_11240_2025_2Q" / "bnd_oa_11240_2025_2Q.shp"
 POP_CSV = DATA_SRC / "_census_reqdoc_1779776403427" / "11240_2024년_인구총괄(총인구).csv"

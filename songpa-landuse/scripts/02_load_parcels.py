@@ -34,7 +34,16 @@ logger = logging.getLogger(__name__)
 
 # ── 경로 설정 ─────────────────────────────────────────────────────
 PROJECT_ROOT = SCRIPT_DIR.parent
-DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+
+# 환경 변수 또는 폴백 경로 설정
+import os
+DATA_SRC_ENV = os.environ.get("DATA_SRC")
+if DATA_SRC_ENV:
+    DATA_SRC = Path(DATA_SRC_ENV)
+else:
+    DATA_SRC = Path(r"c:\Users\gangg\antigravity\prom")
+    if not DATA_SRC.exists():
+        DATA_SRC = PROJECT_ROOT.parent
 
 # 입력 파일
 PARCEL_SHP = (
