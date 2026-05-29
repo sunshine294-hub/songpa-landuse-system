@@ -32,7 +32,7 @@ bnd_sigungu_11240_2025_2Q/
 
 # 3. Intermediate and Processed Data
 songpa-landuse/data/
-songpa-landuse/frontend/public/data/
+# songpa-landuse/frontend/public/data/ (GitHub Pages 배포용 컴파일 데이터는 커밋 허용)
 
 # 4. Frontend Node Modules & Local Build
 songpa-landuse/frontend/node_modules/

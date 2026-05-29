@@ -112,18 +112,51 @@ def load_dong_boundary() -> gpd.GeoDataFrame:
     gdf["ADM_CD"] = gdf["ADM_CD"].astype(str)
     gdf["BASE_DATE"] = gdf["BASE_DATE"].astype(str)
 
-    # ADM_NM 컬럼 존재 여부 체크 및 폴백 적용
-    if "ADM_NM" not in gdf.columns:
-        logger.warning("  ADM_NM 컬럼이 존재하지 않습니다. 대체 속성 검색 중...")
+    # 행정동 코드(ADM_CD) 8자리와 정확한 한글 행정동명 매핑 (DBF 한글 깨짐 원천 방지)
+    DONG_NAME_MAP = {
+        "11240510": "풍납1동",
+        "11240520": "풍납2동",
+        "11240530": "거여1동",
+        "11240540": "거여2동",
+        "11240550": "마천1동",
+        "11240560": "마천2동",
+        "11240570": "방이1동",
+        "11240580": "방이2동",
+        "11240590": "오륜동",
+        "11240600": "오금동",
+        "11240610": "송파1동",
+        "11240620": "송파2동",
+        "11240630": "석촌동",
+        "11240640": "삼전동",
+        "11240650": "가락본동",
+        "11240660": "가락1동",
+        "11240670": "가락2동",
+        "11240680": "문정1동",
+        "11240690": "문정2동",
+        "11240710": "장지동",
+        "11240750": "위례동",
+        "11240770": "잠실본동",
+        "11240780": "잠실2동",
+        "11240790": "잠실3동",
+        "11240800": "잠실4동",
+        "11240810": "잠실6동",
+        "11240820": "잠실7동",
+    }
+
+    # ADM_CD 기반으로 깨끗한 한글 이름 매핑
+    gdf["ADM_NM"] = gdf["ADM_CD"].map(DONG_NAME_MAP)
+
+    # 매핑되지 않은 경우 폴백
+    if gdf["ADM_NM"].isnull().any():
+        logger.warning("  일부 ADM_CD가 DONG_NAME_MAP에 없습니다. 폴백 적용 중...")
+        raw_fallback = gdf["ADM_NM"].copy()
         if "EMD_KOR_NM" in gdf.columns:
-            gdf["ADM_NM"] = gdf["EMD_KOR_NM"]
+            gdf["ADM_NM"] = gdf["ADM_NM"].fillna(gdf["EMD_KOR_NM"])
         elif "EMD_NM" in gdf.columns:
-            gdf["ADM_NM"] = gdf["EMD_NM"]
-        elif "ADM_CD" in gdf.columns:
-            gdf["ADM_NM"] = gdf["ADM_CD"]
+            gdf["ADM_NM"] = gdf["ADM_NM"].fillna(gdf["EMD_NM"])
         else:
-            gdf["ADM_NM"] = "행정동"
-        logger.info("  폴백 적용 완료: ADM_NM 생성됨")
+            gdf["ADM_NM"] = gdf["ADM_NM"].fillna(gdf["ADM_CD"])
+        logger.info("  폴백 적용 완료")
 
     # 지오메트리 유효성 검증
     invalid_count = (~gdf.geometry.is_valid).sum()

@@ -1,0 +1,1021 @@
+{
+  "summary": {
+    "parcel_count": 31153,
+    "building_count": 20359,
+    "total_area_m2": 33833553.4,
+    "emd_count": 13,
+    "oa_count": 1278
+  },
+  "by_purpose": [
+    {
+      "key": "기타",
+      "parcels": 10794,
+      "area_m2": 20090223.4,
+      "pct": 59.4
+    },
+    {
+      "key": "공동주택",
+      "parcels": 7927,
+      "area_m2": 5961261.5,
+      "pct": 17.6
+    },
+    {
+      "key": "교육연구시설",
+      "parcels": 187,
+      "area_m2": 1847555.7,
+      "pct": 5.5
+    },
+    {
+      "key": "제1종근린생활시설",
+      "parcels": 2002,
+      "area_m2": 1277775.7,
+      "pct": 3.8
+    },
+    {
+      "key": "단독주택",
+      "parcels": 7063,
+      "area_m2": 1187091.2,
+      "pct": 3.5
+    },
+    {
+      "key": "문화및집회시설",
+      "parcels": 16,
+      "area_m2": 1096534.5,
+      "pct": 3.2
+    },
+    {
+      "key": "제2종근린생활시설",
+      "parcels": 2495,
+      "area_m2": 894408.3,
+      "pct": 2.6
+    },
+    {
+      "key": "판매시설",
+      "parcels": 25,
+      "area_m2": 621827.2,
+      "pct": 1.8
+    },
+    {
+      "key": "업무시설",
+      "parcels": 346,
+      "area_m2": 461020.9,
+      "pct": 1.4
+    },
+    {
+      "key": "노유자시설",
+      "parcels": 123,
+      "area_m2": 267971.8,
+      "pct": 0.8
+    },
+    {
+      "key": "자동차관련시설",
+      "parcels": 89,
+      "area_m2": 93615.1,
+      "pct": 0.3
+    },
+    {
+      "key": "숙박시설",
+      "parcels": 85,
+      "area_m2": 33965.9,
+      "pct": 0.1
+    },
+    {
+      "key": "공장",
+      "parcels": 1,
+      "area_m2": 302.2,
+      "pct": 0.0
+    }
+  ],
+  "by_zone": [
+    {
+      "key": "3종일반주거",
+      "parcels": 4872,
+      "area_m2": 9405433.0,
+      "pct": 27.8
+    },
+    {
+      "key": "2종일반주거",
+      "parcels": 20112,
+      "area_m2": 8582348.8,
+      "pct": 25.4
+    },
+    {
+      "key": "자연녹지",
+      "parcels": 1218,
+      "area_m2": 8113539.6,
+      "pct": 24.0
+    },
+    {
+      "key": "기타",
+      "parcels": 2063,
+      "area_m2": 2435148.3,
+      "pct": 7.2
+    },
+    {
+      "key": "1종일반주거",
+      "parcels": 1024,
+      "area_m2": 1782050.5,
+      "pct": 5.3
+    },
+    {
+      "key": "준주거",
+      "parcels": 829,
+      "area_m2": 1110383.0,
+      "pct": 3.3
+    },
+    {
+      "key": "일반상업",
+      "parcels": 594,
+      "area_m2": 1012996.6,
+      "pct": 3.0
+    },
+    {
+      "key": "유통상업",
+      "parcels": 33,
+      "area_m2": 841821.5,
+      "pct": 2.5
+    },
+    {
+      "key": "생산녹지",
+      "parcels": 225,
+      "area_m2": 458121.7,
+      "pct": 1.4
+    },
+    {
+      "key": "1종전용주거",
+      "parcels": 175,
+      "area_m2": 71000.9,
+      "pct": 0.2
+    },
+    {
+      "key": "근린상업",
+      "parcels": 8,
+      "area_m2": 20709.4,
+      "pct": 0.1
+    }
+  ],
+  "by_emd_purpose": [
+    {
+      "emd": "가락동",
+      "purpose": "기타",
+      "parcels": 618,
+      "area_m2": 1575602.6
+    },
+    {
+      "emd": "가락동",
+      "purpose": "공동주택",
+      "parcels": 735,
+      "area_m2": 587944.5
+    },
+    {
+      "emd": "가락동",
+      "purpose": "판매시설",
+      "parcels": 4,
+      "area_m2": 544027.2
+    },
+    {
+      "emd": "가락동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 273,
+      "area_m2": 240754.0
+    },
+    {
+      "emd": "가락동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 389,
+      "area_m2": 126475.4
+    },
+    {
+      "emd": "가락동",
+      "purpose": "교육연구시설",
+      "parcels": 24,
+      "area_m2": 123289.5
+    },
+    {
+      "emd": "가락동",
+      "purpose": "업무시설",
+      "parcels": 60,
+      "area_m2": 105181.0
+    },
+    {
+      "emd": "가락동",
+      "purpose": "단독주택",
+      "parcels": 460,
+      "area_m2": 93002.9
+    },
+    {
+      "emd": "가락동",
+      "purpose": "노유자시설",
+      "parcels": 11,
+      "area_m2": 22799.9
+    },
+    {
+      "emd": "가락동",
+      "purpose": "자동차관련시설",
+      "parcels": 15,
+      "area_m2": 5856.2
+    },
+    {
+      "emd": "가락동",
+      "purpose": "숙박시설",
+      "parcels": 2,
+      "area_m2": 2102.5
+    },
+    {
+      "emd": "거여동",
+      "purpose": "기타",
+      "parcels": 1363,
+      "area_m2": 1921847.5
+    },
+    {
+      "emd": "거여동",
+      "purpose": "공동주택",
+      "parcels": 254,
+      "area_m2": 239926.8
+    },
+    {
+      "emd": "거여동",
+      "purpose": "단독주택",
+      "parcels": 642,
+      "area_m2": 85979.0
+    },
+    {
+      "emd": "거여동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 123,
+      "area_m2": 56208.2
+    },
+    {
+      "emd": "거여동",
+      "purpose": "교육연구시설",
+      "parcels": 7,
+      "area_m2": 40310.0
+    },
+    {
+      "emd": "거여동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 112,
+      "area_m2": 29014.3
+    },
+    {
+      "emd": "거여동",
+      "purpose": "업무시설",
+      "parcels": 11,
+      "area_m2": 6846.3
+    },
+    {
+      "emd": "거여동",
+      "purpose": "노유자시설",
+      "parcels": 9,
+      "area_m2": 6349.6
+    },
+    {
+      "emd": "거여동",
+      "purpose": "자동차관련시설",
+      "parcels": 4,
+      "area_m2": 1902.8
+    },
+    {
+      "emd": "거여동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 600.0
+    },
+    {
+      "emd": "거여동",
+      "purpose": "숙박시설",
+      "parcels": 1,
+      "area_m2": 242.8
+    },
+    {
+      "emd": "마천동",
+      "purpose": "기타",
+      "parcels": 1574,
+      "area_m2": 733101.2
+    },
+    {
+      "emd": "마천동",
+      "purpose": "단독주택",
+      "parcels": 1640,
+      "area_m2": 220975.0
+    },
+    {
+      "emd": "마천동",
+      "purpose": "교육연구시설",
+      "parcels": 6,
+      "area_m2": 190477.7
+    },
+    {
+      "emd": "마천동",
+      "purpose": "공동주택",
+      "parcels": 633,
+      "area_m2": 185596.2
+    },
+    {
+      "emd": "마천동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 245,
+      "area_m2": 68250.6
+    },
+    {
+      "emd": "마천동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 132,
+      "area_m2": 39645.0
+    },
+    {
+      "emd": "마천동",
+      "purpose": "노유자시설",
+      "parcels": 19,
+      "area_m2": 17746.1
+    },
+    {
+      "emd": "마천동",
+      "purpose": "판매시설",
+      "parcels": 3,
+      "area_m2": 6864.9
+    },
+    {
+      "emd": "마천동",
+      "purpose": "자동차관련시설",
+      "parcels": 6,
+      "area_m2": 2481.0
+    },
+    {
+      "emd": "마천동",
+      "purpose": "업무시설",
+      "parcels": 3,
+      "area_m2": 1455.2
+    },
+    {
+      "emd": "마천동",
+      "purpose": "숙박시설",
+      "parcels": 1,
+      "area_m2": 121.5
+    },
+    {
+      "emd": "문정동",
+      "purpose": "기타",
+      "parcels": 707,
+      "area_m2": 1592107.9
+    },
+    {
+      "emd": "문정동",
+      "purpose": "공동주택",
+      "parcels": 589,
+      "area_m2": 567773.1
+    },
+    {
+      "emd": "문정동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 185,
+      "area_m2": 92148.5
+    },
+    {
+      "emd": "문정동",
+      "purpose": "업무시설",
+      "parcels": 33,
+      "area_m2": 87107.3
+    },
+    {
+      "emd": "문정동",
+      "purpose": "교육연구시설",
+      "parcels": 8,
+      "area_m2": 81412.1
+    },
+    {
+      "emd": "문정동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 226,
+      "area_m2": 66260.4
+    },
+    {
+      "emd": "문정동",
+      "purpose": "단독주택",
+      "parcels": 316,
+      "area_m2": 59984.5
+    },
+    {
+      "emd": "문정동",
+      "purpose": "노유자시설",
+      "parcels": 8,
+      "area_m2": 42060.9
+    },
+    {
+      "emd": "문정동",
+      "purpose": "판매시설",
+      "parcels": 2,
+      "area_m2": 11193.7
+    },
+    {
+      "emd": "문정동",
+      "purpose": "자동차관련시설",
+      "parcels": 9,
+      "area_m2": 3737.9
+    },
+    {
+      "emd": "문정동",
+      "purpose": "문화및집회시설",
+      "parcels": 3,
+      "area_m2": 1988.0
+    },
+    {
+      "emd": "문정동",
+      "purpose": "숙박시설",
+      "parcels": 1,
+      "area_m2": 249.4
+    },
+    {
+      "emd": "방이동",
+      "purpose": "기타",
+      "parcels": 1072,
+      "area_m2": 2006461.1
+    },
+    {
+      "emd": "방이동",
+      "purpose": "문화및집회시설",
+      "parcels": 4,
+      "area_m2": 1085573.3
+    },
+    {
+      "emd": "방이동",
+      "purpose": "공동주택",
+      "parcels": 995,
+      "area_m2": 577575.9
+    },
+    {
+      "emd": "방이동",
+      "purpose": "교육연구시설",
+      "parcels": 41,
+      "area_m2": 359200.7
+    },
+    {
+      "emd": "방이동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 354,
+      "area_m2": 171413.3
+    },
+    {
+      "emd": "방이동",
+      "purpose": "단독주택",
+      "parcels": 387,
+      "area_m2": 86551.0
+    },
+    {
+      "emd": "방이동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 205,
+      "area_m2": 73248.0
+    },
+    {
+      "emd": "방이동",
+      "purpose": "업무시설",
+      "parcels": 73,
+      "area_m2": 45364.9
+    },
+    {
+      "emd": "방이동",
+      "purpose": "판매시설",
+      "parcels": 4,
+      "area_m2": 23566.2
+    },
+    {
+      "emd": "방이동",
+      "purpose": "숙박시설",
+      "parcels": 45,
+      "area_m2": 16332.7
+    },
+    {
+      "emd": "방이동",
+      "purpose": "노유자시설",
+      "parcels": 6,
+      "area_m2": 11681.4
+    },
+    {
+      "emd": "방이동",
+      "purpose": "자동차관련시설",
+      "parcels": 12,
+      "area_m2": 4759.3
+    },
+    {
+      "emd": "방이동",
+      "purpose": "공장",
+      "parcels": 1,
+      "area_m2": 302.2
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "기타",
+      "parcels": 305,
+      "area_m2": 436906.5
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "공동주택",
+      "parcels": 1100,
+      "area_m2": 250790.2
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "단독주택",
+      "parcels": 434,
+      "area_m2": 94452.3
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 170,
+      "area_m2": 58552.2
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "교육연구시설",
+      "parcels": 7,
+      "area_m2": 40461.5
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 104,
+      "area_m2": 34274.2
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "업무시설",
+      "parcels": 20,
+      "area_m2": 15387.3
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "노유자시설",
+      "parcels": 15,
+      "area_m2": 14639.1
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "숙박시설",
+      "parcels": 6,
+      "area_m2": 3204.5
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "자동차관련시설",
+      "parcels": 5,
+      "area_m2": 2535.3
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "판매시설",
+      "parcels": 2,
+      "area_m2": 1133.5
+    },
+    {
+      "emd": "삼전동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 372.6
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "기타",
+      "parcels": 353,
+      "area_m2": 360837.4
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "공동주택",
+      "parcels": 1093,
+      "area_m2": 263946.0
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "단독주택",
+      "parcels": 445,
+      "area_m2": 95292.5
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 179,
+      "area_m2": 92301.9
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 246,
+      "area_m2": 85820.9
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "교육연구시설",
+      "parcels": 7,
+      "area_m2": 17852.0
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "업무시설",
+      "parcels": 33,
+      "area_m2": 17796.1
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "노유자시설",
+      "parcels": 13,
+      "area_m2": 6297.1
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "숙박시설",
+      "parcels": 4,
+      "area_m2": 2378.1
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "자동차관련시설",
+      "parcels": 4,
+      "area_m2": 1566.2
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "판매시설",
+      "parcels": 1,
+      "area_m2": 1403.7
+    },
+    {
+      "emd": "석촌동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 691.7
+    },
+    {
+      "emd": "송파동",
+      "purpose": "공동주택",
+      "parcels": 934,
+      "area_m2": 486188.2
+    },
+    {
+      "emd": "송파동",
+      "purpose": "기타",
+      "parcels": 386,
+      "area_m2": 472600.4
+    },
+    {
+      "emd": "송파동",
+      "purpose": "교육연구시설",
+      "parcels": 14,
+      "area_m2": 96446.7
+    },
+    {
+      "emd": "송파동",
+      "purpose": "단독주택",
+      "parcels": 456,
+      "area_m2": 94298.0
+    },
+    {
+      "emd": "송파동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 243,
+      "area_m2": 77887.9
+    },
+    {
+      "emd": "송파동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 181,
+      "area_m2": 58558.3
+    },
+    {
+      "emd": "송파동",
+      "purpose": "업무시설",
+      "parcels": 28,
+      "area_m2": 19068.8
+    },
+    {
+      "emd": "송파동",
+      "purpose": "판매시설",
+      "parcels": 3,
+      "area_m2": 7997.1
+    },
+    {
+      "emd": "송파동",
+      "purpose": "노유자시설",
+      "parcels": 4,
+      "area_m2": 2416.9
+    },
+    {
+      "emd": "송파동",
+      "purpose": "자동차관련시설",
+      "parcels": 3,
+      "area_m2": 1202.1
+    },
+    {
+      "emd": "송파동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 220.1
+    },
+    {
+      "emd": "신천동",
+      "purpose": "기타",
+      "parcels": 104,
+      "area_m2": 3531636.2
+    },
+    {
+      "emd": "신천동",
+      "purpose": "공동주택",
+      "parcels": 11,
+      "area_m2": 466232.1
+    },
+    {
+      "emd": "신천동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 4,
+      "area_m2": 104393.3
+    },
+    {
+      "emd": "신천동",
+      "purpose": "업무시설",
+      "parcels": 16,
+      "area_m2": 96800.1
+    },
+    {
+      "emd": "신천동",
+      "purpose": "노유자시설",
+      "parcels": 1,
+      "area_m2": 72305.9
+    },
+    {
+      "emd": "신천동",
+      "purpose": "교육연구시설",
+      "parcels": 6,
+      "area_m2": 62304.5
+    },
+    {
+      "emd": "신천동",
+      "purpose": "판매시설",
+      "parcels": 1,
+      "area_m2": 6606.3
+    },
+    {
+      "emd": "신천동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 1,
+      "area_m2": 4379.5
+    },
+    {
+      "emd": "오금동",
+      "purpose": "기타",
+      "parcels": 545,
+      "area_m2": 742180.5
+    },
+    {
+      "emd": "오금동",
+      "purpose": "공동주택",
+      "parcels": 521,
+      "area_m2": 335876.3
+    },
+    {
+      "emd": "오금동",
+      "purpose": "교육연구시설",
+      "parcels": 18,
+      "area_m2": 330144.7
+    },
+    {
+      "emd": "오금동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 208,
+      "area_m2": 64623.9
+    },
+    {
+      "emd": "오금동",
+      "purpose": "단독주택",
+      "parcels": 327,
+      "area_m2": 62136.1
+    },
+    {
+      "emd": "오금동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 153,
+      "area_m2": 42187.8
+    },
+    {
+      "emd": "오금동",
+      "purpose": "노유자시설",
+      "parcels": 11,
+      "area_m2": 41105.7
+    },
+    {
+      "emd": "오금동",
+      "purpose": "업무시설",
+      "parcels": 23,
+      "area_m2": 17952.0
+    },
+    {
+      "emd": "오금동",
+      "purpose": "자동차관련시설",
+      "parcels": 12,
+      "area_m2": 8508.3
+    },
+    {
+      "emd": "오금동",
+      "purpose": "문화및집회시설",
+      "parcels": 3,
+      "area_m2": 2773.8
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "기타",
+      "parcels": 458,
+      "area_m2": 2879570.2
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "공동주택",
+      "parcels": 782,
+      "area_m2": 1483022.7
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 175,
+      "area_m2": 294198.1
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "교육연구시설",
+      "parcels": 27,
+      "area_m2": 275972.8
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "단독주택",
+      "parcels": 530,
+      "area_m2": 104815.0
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 280,
+      "area_m2": 103414.3
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "업무시설",
+      "parcels": 37,
+      "area_m2": 28308.0
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "노유자시설",
+      "parcels": 10,
+      "area_m2": 13190.3
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "판매시설",
+      "parcels": 3,
+      "area_m2": 11247.6
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "숙박시설",
+      "parcels": 25,
+      "area_m2": 9334.4
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 2438.2
+    },
+    {
+      "emd": "잠실동",
+      "purpose": "자동차관련시설",
+      "parcels": 4,
+      "area_m2": 1421.4
+    },
+    {
+      "emd": "장지동",
+      "purpose": "기타",
+      "parcels": 1721,
+      "area_m2": 2286903.2
+    },
+    {
+      "emd": "장지동",
+      "purpose": "공동주택",
+      "parcels": 12,
+      "area_m2": 229361.6
+    },
+    {
+      "emd": "장지동",
+      "purpose": "교육연구시설",
+      "parcels": 9,
+      "area_m2": 117726.9
+    },
+    {
+      "emd": "장지동",
+      "purpose": "자동차관련시설",
+      "parcels": 10,
+      "area_m2": 53610.0
+    },
+    {
+      "emd": "장지동",
+      "purpose": "노유자시설",
+      "parcels": 3,
+      "area_m2": 13333.2
+    },
+    {
+      "emd": "장지동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 10,
+      "area_m2": 7791.6
+    },
+    {
+      "emd": "장지동",
+      "purpose": "판매시설",
+      "parcels": 1,
+      "area_m2": 3872.0
+    },
+    {
+      "emd": "장지동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 3,
+      "area_m2": 2248.0
+    },
+    {
+      "emd": "장지동",
+      "purpose": "업무시설",
+      "parcels": 1,
+      "area_m2": 1056.4
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "기타",
+      "parcels": 1588,
+      "area_m2": 1550468.6
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "공동주택",
+      "parcels": 268,
+      "area_m2": 287027.9
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "단독주택",
+      "parcels": 1426,
+      "area_m2": 189604.9
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "제1종근린생활시설",
+      "parcels": 176,
+      "area_m2": 140655.2
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "교육연구시설",
+      "parcels": 13,
+      "area_m2": 111956.5
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "제2종근린생활시설",
+      "parcels": 120,
+      "area_m2": 37479.2
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "업무시설",
+      "parcels": 8,
+      "area_m2": 18697.4
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "자동차관련시설",
+      "parcels": 5,
+      "area_m2": 6034.5
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "노유자시설",
+      "parcels": 13,
+      "area_m2": 4045.8
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "판매시설",
+      "parcels": 1,
+      "area_m2": 3915.1
+    },
+    {
+      "emd": "풍납동",
+      "purpose": "문화및집회시설",
+      "parcels": 1,
+      "area_m2": 1876.7
+    }
+  ],
+  "oa_totals": {
+    "population": 628648,
+    "households": 267817
+  }
+}

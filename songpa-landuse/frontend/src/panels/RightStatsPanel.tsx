@@ -23,7 +23,7 @@ function DonutChart({ data, colors }: { data: { key: string; parcels: number; ar
             <Cell key={d.key} fill={colors[d.key] || '#BDC3C7'} />
           ))}
         </Pie>
-        <Tooltip formatter={(v: number) => `${v.toLocaleString()} ㎡`} contentStyle={{
+        <Tooltip formatter={(v: any) => `${Number(v || 0).toLocaleString()} ㎡`} contentStyle={{
           background: '#1e293b', border: 'none', borderRadius: 8, color: '#e2e8f0', fontSize: 12,
         }} />
       </PieChart>
@@ -64,7 +64,7 @@ export default function RightStatsPanel() {
   const [selectedEmd, setSelectedEmd] = useState<string>('');
 
   useEffect(() => {
-    fetch('/data/stats.json').then(r => r.json()).then(data => {
+    fetch('data/stats.json').then(r => r.json()).then(data => {
       setStats(data);
       if (data.by_emd_purpose && data.by_emd_purpose.length > 0) {
         const uniqueEmds = Array.from(new Set(data.by_emd_purpose.map((d: any) => d.emd))) as string[];

@@ -57,10 +57,10 @@ export default function MapView() {
     map.on('load', () => {
       // Add GeoJSON sources
       const sources = [
-        { id: 'admin-emd', url: '/data/dong_boundary.geojson' },
-        { id: 'oa-stats', url: '/data/oa_stats.geojson' },
-        { id: 'parcels', url: '/data/parcels.geojson' },
-        { id: 'buildings', url: '/data/buildings.geojson' },
+        { id: 'admin-emd', url: 'data/dong_boundary.geojson' },
+        { id: 'oa-stats', url: 'data/oa_stats.geojson' },
+        { id: 'parcels', url: 'data/parcels.geojson' },
+        { id: 'buildings', url: 'data/buildings.geojson' },
       ];
 
       for (const s of sources) {
