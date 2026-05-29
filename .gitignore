@@ -1,0 +1,57 @@
+# 1. Python & OS files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 2. Large Raw Datasets (SHP, XLSX, ZIP, TXT)
+*.xlsx
+*.xls
+*.zip
+*.tar.gz
+*.txt
+AL_D010_11_20260509_GIS건물통합정보/
+AL_D194_11710_20260520/
+LSMD_ADM_SECT_UMD_서울/
+LSMD_CONT_LDREG_서울_송파구/
+N3A_G0100000/
+N3A_G0110000/
+_census_reqdoc_1779776403427/
+bnd_dong_11240_2025_2Q/
+bnd_oa_11240_2025_2Q/
+bnd_sigungu_11240_2025_2Q/
+
+# 3. Intermediate and Processed Data
+songpa-landuse/data/
+songpa-landuse/frontend/public/data/
+
+# 4. Frontend Node Modules & Local Build
+songpa-landuse/frontend/node_modules/
+songpa-landuse/frontend/dist/
+songpa-landuse/frontend/.env.local
+songpa-landuse/frontend/.env.production
+songpa-landuse/frontend/screenshot_*.png
+
+# 5. Local debug / scratch files
+_busok_debug.py
+_busok_debug.txt
+_check_cols.py
+_cols_out.txt
+_debug_pnu.py
+_exact_cols.txt
+_exact_cols2.txt
+_inspect.py
+_inspect2.py
+_inspect2_output.txt
+_inspect_output.txt
+songpa-landuse/_out*.txt
+songpa-landuse/_run_output.txt
